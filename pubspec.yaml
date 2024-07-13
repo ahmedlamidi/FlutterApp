@@ -1,9 +1,10 @@
-name: namer_app
-description: A new Flutter project.
+name: gaming_time_app
+description: A flutter app to combine 
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 version: 0.0.1+1
+
 
 environment:
   sdk: ^3.1.1
@@ -23,3 +24,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/
