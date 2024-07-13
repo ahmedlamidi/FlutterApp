@@ -12,6 +12,7 @@ void main() async {
 
   try {
     await initializeFirebase();
+
     runApp(
       ChangeNotifierProvider(
         create: (context) => AuthProvider(),

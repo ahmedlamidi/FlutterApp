@@ -1,4 +1,5 @@
 //handle error input and proper error messages
+//take name alongside email and confirm password
 
 import 'package:flutter/material.dart';
 import 'package:gametime/providers/auth_provider.dart';

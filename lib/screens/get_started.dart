@@ -1,5 +1,6 @@
 //fix UI
 //lighter background opacity
+//skip if already logged in
 
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -56,10 +57,10 @@ class _GetStartedState extends State<GetStarted> {
           ),
           Center(
             child: Container(
+              width: double.infinity,
               padding: const EdgeInsets.all(30),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
                     'assets/images/logo.png',
@@ -68,13 +69,15 @@ class _GetStartedState extends State<GetStarted> {
                     fit: BoxFit.cover,
                   ),
                   const Text(
-                    "Let's get started!",
+                    "Let's get\nStarted!",
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
+                  const SizedBox(height: 30),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pushReplacement(
@@ -83,13 +86,19 @@ class _GetStartedState extends State<GetStarted> {
                             builder: (context) => const CreateAccountScreen()),
                       );
                     },
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 50, vertical: 15),
+                      textStyle: const TextStyle(fontSize: 18),
+                    ),
                     child: const Text('Create Account!'),
                   ),
+                  const SizedBox(height: 20),
                   const Text(
                     'Already have an account?',
                     selectionColor: Colors.amber,
                   ),
-                  TextButton(
+                  ElevatedButton(
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
@@ -97,6 +106,11 @@ class _GetStartedState extends State<GetStarted> {
                             builder: (context) => const LoginScreen()),
                       );
                     },
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 50, vertical: 15),
+                      textStyle: const TextStyle(fontSize: 18),
+                    ),
                     child: const Text(
                       'Sign In',
                       selectionColor: Colors.white,

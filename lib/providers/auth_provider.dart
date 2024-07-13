@@ -3,57 +3,71 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+// AuthProvider class to manage authentication state
 class AuthProvider with ChangeNotifier {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  User? _user;
-  String? _errorMessage;
+  final FirebaseAuth _auth =
+      FirebaseAuth.instance; // Firebase authentication instance
+  User? _user; // User object to store the current user
+  String? _errorMessage; // Error message string to store any errors
 
+  // Constructor to listen to authentication state changes
   AuthProvider() {
     _auth.authStateChanges().listen((User? user) {
-      _user = user;
-      notifyListeners();
+      _user = user; // Update the user object
+      notifyListeners(); // Notify listeners about the change
     });
   }
 
+  // Getter for the user object
   User? get user => _user;
+
+  // Getter for the error message
   String? get errorMessage => _errorMessage;
 
+  // Getter to check if the user is logged in
   bool get isLoggedIn => _user != null;
 
+  // Method to sign in anonymously
   Future<void> anonymousLogin() async {
     try {
-      await _auth.signInAnonymously();
+      await _auth.signInAnonymously(); // Sign in anonymously
     } catch (e) {
-      _errorMessage = e.toString();
-      notifyListeners();
+      _errorMessage = e.toString(); // Set the error message
+      notifyListeners(); // Notify listeners about the change
     }
   }
 
+  // Method to sign up with email and password
   Future<void> signUpWithEmail(String email, String password) async {
     try {
       await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+          email: email,
+          password: password); // Create a new user with email and password
     } catch (e) {
-      _errorMessage = e.toString();
-      notifyListeners();
+      _errorMessage = e.toString(); // Set the error message
+      notifyListeners(); // Notify listeners about the change
     }
   }
 
+  // Method to sign in with email and password
   Future<void> signInWithEmail(String email, String password) async {
     try {
-      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      await _auth.signInWithEmailAndPassword(
+          email: email, password: password); // Sign in with email and password
     } catch (e) {
-      _errorMessage = e.toString();
-      notifyListeners();
+      _errorMessage = e.toString(); // Set the error message
+      notifyListeners(); // Notify listeners about the change
     }
   }
 
+  // Method to sign out the user
   Future<void> signOut() async {
-    await _auth.signOut();
+    await _auth.signOut(); // Sign out the user
   }
 
+  // Method to clear the error message
   void clearError() {
-    _errorMessage = null;
-    notifyListeners();
+    _errorMessage = null; // Clear the error message
+    notifyListeners(); // Notify listeners about the change
   }
 }

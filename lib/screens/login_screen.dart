@@ -61,6 +61,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   );
                 }
               },
+              style: ElevatedButton.styleFrom(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                textStyle: const TextStyle(fontSize: 18),
+              ),
               child: const Text('Sign In'),
             ),
             TextButton(
@@ -71,6 +76,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       builder: (context) => const CreateAccountScreen()),
                 );
               },
+              style: TextButton.styleFrom(
+                textStyle: const TextStyle(fontSize: 16),
+              ),
               child: const Text('Don\'t have an account? Sign Up'),
             ),
           ],
