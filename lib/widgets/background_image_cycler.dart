@@ -17,7 +17,15 @@ class BackgroundImageCycler extends StatelessWidget {
       transitionBuilder: (child, animation) {
         return FadeTransition(
           opacity: animation,
-          child: child,
+          child: Opacity(
+            opacity: 0.85,
+            child: ColorFiltered(
+                colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.7),
+                  BlendMode.darken,
+                ),
+                child: child),
+          ),
         );
       },
       child: Container(

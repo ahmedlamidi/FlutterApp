@@ -1,5 +1,4 @@
-//fix UI
-//lighter background opacity
+//adjust space between text widgets
 //skip if already logged in
 
 import 'dart:async';
@@ -7,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:gametime/screens/create_account_screen.dart';
 import 'package:gametime/screens/login_screen.dart';
 import '../widgets/background_image_cycler.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class GetStarted extends StatefulWidget {
   const GetStarted({super.key});
@@ -61,6 +61,7 @@ class _GetStartedState extends State<GetStarted> {
               padding: const EdgeInsets.all(30),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
                     'assets/images/logo.png',
@@ -68,16 +69,29 @@ class _GetStartedState extends State<GetStarted> {
                     height: 400,
                     fit: BoxFit.cover,
                   ),
-                  const Text(
-                    "Let's get\nStarted!",
+                  Text(
+                    "Let's Get",
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                    style: GoogleFonts.handjet(
+                      textStyle: TextStyle(
+                        fontSize: 60,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  Text(
+                    "Started!",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.handjet(
+                      textStyle: TextStyle(
+                        fontSize: 60,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 5),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pushReplacement(
@@ -87,18 +101,34 @@ class _GetStartedState extends State<GetStarted> {
                       );
                     },
                     style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 50, vertical: 15),
+                          horizontal: 50, vertical: 10),
+                      backgroundColor: Colors.teal,
                       textStyle: const TextStyle(fontSize: 18),
                     ),
-                    child: const Text('Create Account!'),
+                    child: Text(
+                      'Create Account!',
+                      style: GoogleFonts.inter(
+                        textStyle: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
                   ),
-                  const SizedBox(height: 20),
-                  const Text(
+                  const SizedBox(height: 10),
+                  Text(
                     'Already have an account?',
-                    selectionColor: Colors.amber,
+                    style: GoogleFonts.inter(
+                      textStyle: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                  ElevatedButton(
+                  TextButton(
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
@@ -106,14 +136,18 @@ class _GetStartedState extends State<GetStarted> {
                             builder: (context) => const LoginScreen()),
                       );
                     },
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 50, vertical: 15),
+                    style: TextButton.styleFrom(
                       textStyle: const TextStyle(fontSize: 18),
                     ),
-                    child: const Text(
-                      'Sign In',
+                    child: Text(
+                      'Log In',
                       selectionColor: Colors.white,
+                      style: GoogleFonts.inter(
+                        textStyle: TextStyle(
+                          color: Colors.teal,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
                 ],
