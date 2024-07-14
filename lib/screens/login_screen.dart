@@ -1,7 +1,6 @@
 //google sign in
 //use flexible and loginbutton class
 //handle error input and proper error messages
-
 import 'package:flutter/material.dart';
 import 'package:gametime/screens/create_account_screen.dart';
 import 'package:gametime/screens/home_screen.dart';
@@ -67,6 +66,28 @@ class _LoginScreenState extends State<LoginScreen> {
                 textStyle: const TextStyle(fontSize: 18),
               ),
               child: const Text('Sign In'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                authProvider.signInWithGoogle().then((_) {
+                  if (authProvider.user != null) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()),
+                    );
+                  }
+                }).catchError((error) {
+                  print('Error signing in with Google: $error');
+                });
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red, // Use Google's branding colors
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                textStyle: const TextStyle(fontSize: 18),
+              ),
+              child: const Text('Sign In with Google'),
             ),
             TextButton(
               onPressed: () {

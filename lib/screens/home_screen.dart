@@ -1,3 +1,5 @@
+//make sure user remains signed in even after app is closed
+
 import 'package:flutter/material.dart';
 import 'package:gametime/bottom_nav.dart';
 import 'package:provider/provider.dart';

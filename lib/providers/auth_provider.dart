@@ -1,7 +1,6 @@
-//google sign in
-
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 // AuthProvider class to manage authentication state
 class AuthProvider with ChangeNotifier {
@@ -41,8 +40,9 @@ class AuthProvider with ChangeNotifier {
   Future<void> signUpWithEmail(String email, String password) async {
     try {
       await _auth.createUserWithEmailAndPassword(
-          email: email,
-          password: password); // Create a new user with email and password
+        email: email,
+        password: password,
+      ); // Create a new user with email and password
     } catch (e) {
       _errorMessage = e.toString(); // Set the error message
       notifyListeners(); // Notify listeners about the change
@@ -53,7 +53,28 @@ class AuthProvider with ChangeNotifier {
   Future<void> signInWithEmail(String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(
-          email: email, password: password); // Sign in with email and password
+        email: email,
+        password: password,
+      ); // Sign in with email and password
+    } catch (e) {
+      _errorMessage = e.toString(); // Set the error message
+      notifyListeners(); // Notify listeners about the change
+    }
+  }
+
+  // Method to sign in with Google
+  Future<void> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser != null) {
+        final GoogleSignInAuthentication googleAuth =
+            await googleUser.authentication;
+        final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken,
+          idToken: googleAuth.idToken,
+        );
+        await _auth.signInWithCredential(credential);
+      }
     } catch (e) {
       _errorMessage = e.toString(); // Set the error message
       notifyListeners(); // Notify listeners about the change
@@ -62,7 +83,12 @@ class AuthProvider with ChangeNotifier {
 
   // Method to sign out the user
   Future<void> signOut() async {
-    await _auth.signOut(); // Sign out the user
+    try {
+      await _auth.signOut(); // Sign out the user
+    } catch (e) {
+      _errorMessage = e.toString(); // Set the error message
+      notifyListeners(); // Notify listeners about the change
+    }
   }
 
   // Method to clear the error message
