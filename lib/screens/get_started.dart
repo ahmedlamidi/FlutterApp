@@ -65,8 +65,8 @@ class _GetStartedState extends State<GetStarted> {
                 children: [
                   Image.asset(
                     'assets/images/logo.png',
-                    width: 400,
-                    height: 400,
+                    width: 100,
+                    height: 100,
                     fit: BoxFit.cover,
                   ),
                   Text(
@@ -91,7 +91,7 @@ class _GetStartedState extends State<GetStarted> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 5),
+                  const SizedBox(height: 1),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pushReplacement(
@@ -118,7 +118,7 @@ class _GetStartedState extends State<GetStarted> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 1),
                   Text(
                     'Already have an account?',
                     style: GoogleFonts.inter(
