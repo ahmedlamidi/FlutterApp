@@ -13,7 +13,7 @@ class BackgroundImageCycler extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
-      duration: const Duration(seconds: 1),
+      duration: const Duration(milliseconds: 400),
       transitionBuilder: (child, animation) {
         return FadeTransition(
           opacity: animation,

@@ -9,10 +9,13 @@ class AuthProvider with ChangeNotifier {
   User? _user; // User object to store the current user
   String? _errorMessage; // Error message string to store any errors
 
+  bool _isCheckingAuthState = true;
+
   // Constructor to listen to authentication state changes
   AuthProvider() {
     _auth.authStateChanges().listen((User? user) {
       _user = user; // Update the user object
+      _isCheckingAuthState = false;
       notifyListeners(); // Notify listeners about the change
     });
   }
@@ -25,6 +28,15 @@ class AuthProvider with ChangeNotifier {
 
   // Getter to check if the user is logged in
   bool get isLoggedIn => _user != null;
+
+  bool get isCheckingAuthState => _isCheckingAuthState;
+
+  Future<void> checkAuthState() async {
+    await Future.delayed(const Duration(
+        milliseconds: 500)); // Simulate a delay for the splash screen
+    _isCheckingAuthState = false;
+    notifyListeners();
+  }
 
   // Method to sign in anonymously
   Future<void> anonymousLogin() async {

@@ -1,5 +1,4 @@
 //adjust space between text widgets
-//skip if already logged in
 
 import 'dart:async';
 import 'package:flutter/material.dart';

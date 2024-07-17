@@ -1,5 +1,4 @@
-//google sign in
-//use flexible and loginbutton class
+//use flexible and loginbutton class (match UI to figma)
 //handle error input and proper error messages
 import 'package:flutter/material.dart';
 import 'package:gametime/screens/create_account_screen.dart';

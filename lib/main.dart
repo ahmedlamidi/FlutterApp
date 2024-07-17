@@ -1,6 +1,7 @@
 //need xCode for iOS
 
 import 'package:flutter/material.dart';
+import 'package:gametime/screens/splash_screen.dart';
 import 'package:gametime/theme.dart';
 import 'package:provider/provider.dart';
 import 'firebase/firebase_initializer.dart';
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'GameTime',
       theme: appTheme,
-      initialRoute: '/',
+      // home: AuthWrapper(),
+      home: SplashScreen(),
       routes: appRoutes,
     );
   }
